@@ -23,6 +23,17 @@ function btnUpdateSettingsClicked() {
     smsCost = Number(smsCostSettingElem.value);
     warningLevel = Number(warningLevelSettingElem.value);
     criticalLevel = Number(criticalLevelSettingElem.value);
+
+    if (criticalLevel > 0 || criticalLevel < 0) {
+        if ((totalBillTwo >= warningLevel) && (totalBillTwo < criticalLevel)) {
+            totalSettingsElem.classList.add("warning");
+        } else if (totalBillTwo >= criticalLevel) {
+            totalSettingsElem.classList.add("danger");
+        } else {
+            totalSettingsElem.classList.remove("danger");
+            totalSettingsElem.classList.remove("warning");
+        }
+}
 }
 
 btnUpdateSettings.addEventListener("click", btnUpdateSettingsClicked);
@@ -47,6 +58,8 @@ function btnAddClicked() {
     totalSettingsElem.innerHTML = totalBillTwo.toFixed(2);
     }
 
+
+    if (criticalLevel > 0 || criticalLevel < 0) {
     if ((totalBillTwo >= warningLevel) && (totalBillTwo < criticalLevel)) {
         totalSettingsElem.classList.add("warning");
     } else if (totalBillTwo >= criticalLevel) {
@@ -55,6 +68,7 @@ function btnAddClicked() {
         totalSettingsElem.classList.remove("danger");
         totalSettingsElem.classList.remove("warning");
     }
+}
 
 
 }
