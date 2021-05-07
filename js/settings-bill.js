@@ -24,16 +24,25 @@ function btnUpdateSettingsClicked() {
     warningLevel = Number(warningLevelSettingElem.value);
     criticalLevel = Number(criticalLevelSettingElem.value);
 
-    if (criticalLevel > 0 || criticalLevel < 0) {
-        if ((totalBillTwo >= warningLevel) && (totalBillTwo < criticalLevel)) {
-            totalSettingsElem.classList.add("warning");
-        } else if (totalBillTwo >= criticalLevel) {
-            totalSettingsElem.classList.add("danger");
-        } else {
-            totalSettingsElem.classList.remove("danger");
-            totalSettingsElem.classList.remove("warning");
+    if (criticalLevel > 0 || criticalLevel < 0) { 
+    if (totalBillTwo >= criticalLevel) {
+        totalSettingsElem.classList.add("danger");
+        totalSettingsElem.classList.remove("warning");
+    } else if (totalBillTwo >= warningLevel){        
+        totalSettingsElem.classList.add("warning");
+        totalSettingsElem.classList.remove("danger");
         }
-}
+        else {
+            totalSettingsElem.classList.remove("warning");
+        totalSettingsElem.classList.remove("danger");
+        }
+    }
+
+console.log("callCost: " + callCost);
+console.log("smsCost: " + smsCost);
+console.log("warningLevel: " + warningLevel);
+console.log("criticalLevel: " + criticalLevel);
+
 }
 
 btnUpdateSettings.addEventListener("click", btnUpdateSettingsClicked);
@@ -44,33 +53,40 @@ function btnAddClicked() {
         var billItemType = checkedRadioBtn.value;
     }
 
+    if (totalBillTwo < criticalLevel){
     if (billItemType === "call") {
         callTotalTwo += callCost;
     } else if (billItemType === "sms") {
         smsTotalTwo += smsCost;
     }
+    }
 
-    totalBillTwo = callTotalTwo + smsTotalTwo;
     
-    if (totalBillTwo <= criticalLevel) {
+    totalBillTwo = callTotalTwo + smsTotalTwo;
     callTotalSettingsElem.innerHTML = callTotalTwo.toFixed(2);
     smsTotalSettingsElem.innerHTML = smsTotalTwo.toFixed(2);
     totalSettingsElem.innerHTML = totalBillTwo.toFixed(2);
-    }
 
+    console.log(totalBillTwo);
 
-    if (criticalLevel > 0 || criticalLevel < 0) {
-    if ((totalBillTwo >= warningLevel) && (totalBillTwo < criticalLevel)) {
-        totalSettingsElem.classList.add("warning");
-    } else if (totalBillTwo >= criticalLevel) {
-        totalSettingsElem.classList.add("danger");
-    } else {
+    if (criticalLevel > 0 || criticalLevel < 0) {    
+        if (totalBillTwo >= criticalLevel) {
+            totalSettingsElem.classList.add("danger");
+            totalSettingsElem.classList.remove("warning");
+        } else if (totalBillTwo >= warningLevel){        
+            totalSettingsElem.classList.add("warning");
+            totalSettingsElem.classList.remove("danger");
+        }
+        else {
+            totalSettingsElem.classList.remove("warning");
         totalSettingsElem.classList.remove("danger");
-        totalSettingsElem.classList.remove("warning");
+        }
     }
+
+    console.log("totalBillTwo: " + totalBillTwo);
+    console.log("callTotalTwo:" + callTotalTwo);
+    console.log("smsTotalTwo:" + smsTotalTwo);
+    console.log("billItemType:" + billItemType);
+
 }
-
-
-}
-
 btnAdd.addEventListener("click", btnAddClicked);
