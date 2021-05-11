@@ -37,14 +37,7 @@ function btnUpdateSettingsClicked() {
         totalSettingsElem.classList.remove("danger");
         }
     }
-
-console.log("callCost: " + callCost);
-console.log("smsCost: " + smsCost);
-console.log("warningLevel: " + warningLevel);
-console.log("criticalLevel: " + criticalLevel);
-
 }
-
 btnUpdateSettings.addEventListener("click", btnUpdateSettingsClicked);
 
 function btnAddClicked() {
@@ -60,14 +53,11 @@ function btnAddClicked() {
         smsTotalTwo += smsCost;
     }
     }
-
     
     totalBillTwo = callTotalTwo + smsTotalTwo;
     callTotalSettingsElem.innerHTML = callTotalTwo.toFixed(2);
     smsTotalSettingsElem.innerHTML = smsTotalTwo.toFixed(2);
     totalSettingsElem.innerHTML = totalBillTwo.toFixed(2);
-
-    console.log(totalBillTwo);
 
     if (criticalLevel > 0 || criticalLevel < 0) {    
         if (totalBillTwo >= criticalLevel) {
@@ -79,14 +69,8 @@ function btnAddClicked() {
         }
         else {
             totalSettingsElem.classList.remove("warning");
-        totalSettingsElem.classList.remove("danger");
+            totalSettingsElem.classList.remove("danger");
         }
     }
-
-    console.log("totalBillTwo: " + totalBillTwo);
-    console.log("callTotalTwo:" + callTotalTwo);
-    console.log("smsTotalTwo:" + smsTotalTwo);
-    console.log("billItemType:" + billItemType);
-
 }
 btnAdd.addEventListener("click", btnAddClicked);

@@ -3,8 +3,7 @@ const billTotalElement = document.querySelector(".billTotal");
 const billStringElement = document.querySelector(".billString");
 const totalElement = document.querySelector(".total");
 
-function calculateBtnClicked(){
-    var billString = billStringElement.value;
+function calculateBill(billString){
     var billItems = billString.split(",");
     var billTotal = 0;
 
@@ -20,8 +19,12 @@ function calculateBtnClicked(){
 
     }
 
-    var roundedBillTotal = billTotal.toFixed(2);
-    billTotalElement.innerHTML = roundedBillTotal;
+    return billTotal.toFixed(2);
+};
+
+function calculateBtnClicked(){
+    billTotalElement.innerHTML = calculateBill(billStringElement.value);
+    var roundedBillTotal = calculateBill(billStringElement.value);
 
     if (roundedBillTotal >= 30) {
         totalElement.classList.remove("warning");
