@@ -5,30 +5,21 @@ const smsTotalOneElement = document.querySelector(".smsTotalOne");
 const totalOneElement = document.querySelector(".totalOne");
 const totalDisplayOneElement = document.querySelector(".red");
 
-var callsTotal = 0;
-var smsTotal = 0;
-var totalBill = 0;
+let calculateText = domFunctions();
 
 function addToBillBtnClicked() {
-    var input = billTypeTextElement.value;
+    calculateText.setTotalsOne(billTypeTextElement.value);
 
-    if (input === "call") {
-        callsTotal += 2.75;
-    } else if (input === "sms") {
-        smsTotal += 0.75;
-    }
+    callTotalOneElement.innerHTML = calculateText.getCallsTotalOne();
+    smsTotalOneElement.innerHTML = calculateText.getSMSTotalOne();
+    totalOneElement.innerHTML = calculateText.getTotalOne();
 
-    totalBill = callsTotal + smsTotal;
-
-    callTotalOneElement.innerHTML = callsTotal.toFixed(2);
-    smsTotalOneElement.innerHTML = smsTotal.toFixed(2);
-    totalOneElement.innerHTML = totalBill.toFixed(2);
-
-    if ((totalBill >= 30) && (totalBill < 50)) {
-        totalDisplayOneElement.classList.add("warning");
-    } else if (totalBill >= 50) {
-        totalDisplayOneElement.classList.add("danger");
-    }
+    totalDisplayOneElement.classList.add(calculateText.setCalcClass(calculateText.getTotalOne()));
 }
 
 addToBillBtn.addEventListener("click", addToBillBtnClicked);
+// if ((totalBill >= 30) && (totalBill < 50)) {
+    //     totalDisplayOneElement.classList.add("warning");
+    // } else if (totalBill >= 50) {
+    //     totalDisplayOneElement.classList.add("danger");
+    // }

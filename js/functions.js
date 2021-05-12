@@ -1,8 +1,30 @@
 function domFunctions(){
     var calcString;
+    var callsTotal = 0;
+    var smsTotal = 0;
 
     function setCalcString(calcBillString){
         calcString = calcBillString;
+    }
+
+    function setTotalsOne(input){
+        if (input === "call") {
+            callsTotal += 2.75;
+        } else if (input === "sms") {
+            smsTotal += 0.75;
+        }
+    }
+
+    function getCallsTotalOne(){
+        return callsTotal.toFixed(2);
+    }
+
+    function getSMSTotalOne(){
+        return smsTotal.toFixed(2);
+    }
+
+    function getTotalOne(){
+        return callsTotal + smsTotal;
     }
 
     function calculateBill(){
@@ -22,6 +44,7 @@ function domFunctions(){
         return billTotal.toFixed(2);
     }
 
+
     function setCalcClass(roundedBillTotal){
         if (roundedBillTotal >= 30) {
             return "danger"
@@ -35,6 +58,10 @@ function domFunctions(){
     return{
         calculateBill,
         setCalcString,
-        setCalcClass
+        setCalcClass,
+        getCallsTotalOne,
+        getSMSTotalOne,
+        getTotalOne,
+        setTotalsOne
     }
 };
