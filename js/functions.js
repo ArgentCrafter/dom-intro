@@ -139,7 +139,7 @@ function domFunctions(){
     }
 
     function getTotalThree(){
-         return (callsTotalThree + smsTotalThree).toFixed(2);
+        return (callsTotalThree + smsTotalThree).toFixed(2);
     }
 
     function setCalcClass(roundedBillTotal){
@@ -176,29 +176,29 @@ function domFunctions(){
     }
 
     return{
-        calculateBill,
-        setCalcString,
-        setCalcClass,
-        setCallCost,
-        setSMSCost,
-        setWarningLevel,
-        setCriticalLevel,
-        getCriticalLevel,
-        getWarningLevel,
-        getCallsTotalOne,
-        getCallsTotalTwo,
-        getCallsTotalThree,
-        getSMSTotalOne,
-        getSMSTotalTwo,
-        getSMSTotalThree,
-        getTotalOne,
-        getTotalTwo,
-        getTotalThree,
-        setTotalsOne,
-        setClass,
-        setClassSettings,
-        calculateRadio,
-        calculateSettings,
-        setTotalBill
+    calculateBill,
+    setCalcString,
+    setCalcClass,
+    setCallCost,
+    setSMSCost,
+    setWarningLevel,
+    setCriticalLevel,
+    getCriticalLevel,
+    getWarningLevel,
+    getCallsTotalOne,
+    getCallsTotalTwo,
+    getCallsTotalThree,
+    getSMSTotalOne,
+    getSMSTotalTwo,
+    getSMSTotalThree,
+    getTotalOne,
+    getTotalTwo,
+    getTotalThree,
+    setTotalsOne,
+    setClass,
+    setClassSettings,
+    calculateRadio,
+    calculateSettings,
+    setTotalBill
     }
 };
