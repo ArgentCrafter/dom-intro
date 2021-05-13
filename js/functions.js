@@ -1,7 +1,20 @@
 function domFunctions(){
     var calcString;
+
     var callsTotal = 0;
     var smsTotal = 0;
+
+    var callsTotalTwo = 0;
+    var smsTotalTwo = 0;
+    var totalBillTwo = 0;
+
+    var callsTotalThree = 0;
+    var smsTotalThree = 0;
+
+    var callCost = 0;
+    var smsCost = 0;
+    var warningLevel = 0;
+    var criticalLevel = 0;
 
     function setCalcString(calcBillString){
         calcString = calcBillString;
@@ -13,18 +26,6 @@ function domFunctions(){
         } else if (input === "sms") {
             smsTotal += 0.75;
         }
-    }
-
-    function getCallsTotalOne(){
-        return callsTotal.toFixed(2);
-    }
-
-    function getSMSTotalOne(){
-        return smsTotal.toFixed(2);
-    }
-
-    function getTotalOne(){
-        return callsTotal + smsTotal;
     }
 
     function calculateBill(){
@@ -44,6 +45,102 @@ function domFunctions(){
         return billTotal.toFixed(2);
     }
 
+    function calculateRadio(checkedRadioBtn){
+        if (checkedRadioBtn){
+            var billItemType = checkedRadioBtn.value;
+        }
+    
+        if (billItemType === "call") {
+            callsTotalTwo+= 2.75;
+        } else if (billItemType === "sms") {
+            smsTotalTwo += 0.75;
+        }
+    }
+
+    function calculateSettings(checkedRadioBtn){
+        if (checkedRadioBtn){
+            var billItemType = checkedRadioBtn.value;
+        }
+        console.log(billItemType);
+        if (totalBillTwo < criticalLevel){
+            if (billItemType === "call") {
+                callsTotalTwo += callCost;
+                console.log(callsTotalTwo);
+            } else if (billItemType === "sms") {
+                smsTotalTwo += smsCost;
+                console.log(smsTotalTwo);
+            }
+            }
+    }
+
+    function setCallCost(input){
+        callCost = Number(input);
+        console.log(callCost);
+    }
+
+    function setSMSCost(input){
+        smsCost = Number(input);
+        console.log(smsCost);
+    }
+
+    function setWarningLevel(input){
+        warningLevel = Number(input);
+        console.log(warningLevel);
+    }
+
+    function setCriticalLevel(input){
+        criticalLevel = Number(input);
+        console.log(criticalLevel);
+    }
+
+    function setTotalBill(){
+        totalBillTwo = callsTotalTwo + smsTotalTwo;
+    }
+
+    function getCriticalLevel(){
+        return criticalLevel;
+    }
+
+    function getWarningLevel(){
+        return warningLevel;
+    }
+
+    function getCallsTotalOne(){
+        return callsTotal.toFixed(2);
+    }
+
+    function getCallsTotalTwo(){
+        return callsTotalTwo.toFixed(2);
+    }
+
+    function getCallsTotalThree(){
+        return callsTotalThree.toFixed(2);
+    }
+
+    function getSMSTotalOne(){
+        return smsTotal.toFixed(2);
+    }
+
+    function getSMSTotalTwo(){
+        return smsTotalTwo.toFixed(2);
+    }
+
+    function getSMSTotalThree(){
+        return smsTotalThree.toFixed(2);
+
+    }
+
+    function getTotalOne(){
+        return (callsTotal + smsTotal).toFixed(2);
+    }
+
+    function getTotalTwo(){
+        return (callsTotalTwo + smsTotalTwo).toFixed(2);
+    }
+
+    function getTotalThree(){
+         return (callsTotalThree + smsTotalThree).toFixed(2);
+    }
 
     function setCalcClass(roundedBillTotal){
         if (roundedBillTotal >= 30) {
@@ -51,17 +148,57 @@ function domFunctions(){
         } else if ((roundedBillTotal >= 20) && (roundedBillTotal < 30)) {
             return "warning"
         } else {
-            return ""
+            return " "
         }
+    }
+
+    function setClass(roundedBillTotal){
+        if (roundedBillTotal >= 50) {
+            return "danger"
+        } else if ((roundedBillTotal >= 30) && (roundedBillTotal < 50)) {
+            return "warning"
+        } else {
+            return " "
+        }
+    }
+
+    function setClassSettings(totalBillTwo){
+        if (criticalLevel > 0 || criticalLevel < 0) { 
+            if (totalBillTwo >= calculateSet.getCriticalLevel()) {
+                return "danger";
+            } else if (totalBillTwo >= warningLevel){        
+                return "warning";
+                }
+                else {
+                    return "";
+                }
+            }
     }
 
     return{
         calculateBill,
         setCalcString,
         setCalcClass,
+        setCallCost,
+        setSMSCost,
+        setWarningLevel,
+        setCriticalLevel,
+        getCriticalLevel,
+        getWarningLevel,
         getCallsTotalOne,
+        getCallsTotalTwo,
+        getCallsTotalThree,
         getSMSTotalOne,
+        getSMSTotalTwo,
+        getSMSTotalThree,
         getTotalOne,
-        setTotalsOne
+        getTotalTwo,
+        getTotalThree,
+        setTotalsOne,
+        setClass,
+        setClassSettings,
+        calculateRadio,
+        calculateSettings,
+        setTotalBill
     }
 };

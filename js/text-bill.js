@@ -14,7 +14,9 @@ function addToBillBtnClicked() {
     smsTotalOneElement.innerHTML = calculateText.getSMSTotalOne();
     totalOneElement.innerHTML = calculateText.getTotalOne();
 
-    totalDisplayOneElement.classList.add(calculateText.setCalcClass(calculateText.getTotalOne()));
+    totalDisplayOneElement.classList.remove("danger");
+    totalDisplayOneElement.classList.remove("warning");
+    totalDisplayOneElement.classList.add(calculateText.setClass(calculateText.getTotalOne()));
 }
 
 addToBillBtn.addEventListener("click", addToBillBtnClicked);

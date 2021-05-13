@@ -9,68 +9,32 @@ const callTotalSettingsElem = document.querySelector(".callTotalSettings");
 const smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
 const totalSettingsElem = document.querySelector(".totalSettings");
 
-var callCost = 0;
-var smsCost = 0;
-var warningLevel = 0;
-var criticalLevel = 0;
-
-var callTotalTwo = 0;
-var smsTotalTwo = 0;
-var totalBillTwo = 0;
+let calculateSet = domFunctions();
 
 function btnUpdateSettingsClicked() {
-    callCost = Number(callCostSettingElem.value);
-    smsCost = Number(smsCostSettingElem.value);
-    warningLevel = Number(warningLevelSettingElem.value);
-    criticalLevel = Number(criticalLevelSettingElem.value);
+    calculateSet.setCallCost(callCostSettingElem.value);
+    calculateSet.setSMSCost(smsCostSettingElem.value);
+    calculateSet.setWarningLevel(warningLevelSettingElem.value);
+    calculateSet.setCriticalLevel(criticalLevelSettingElem.value);
 
-    if (criticalLevel > 0 || criticalLevel < 0) { 
-    if (totalBillTwo >= criticalLevel) {
-        totalSettingsElem.classList.add("danger");
-        totalSettingsElem.classList.remove("warning");
-    } else if (totalBillTwo >= warningLevel){        
-        totalSettingsElem.classList.add("warning");
-        totalSettingsElem.classList.remove("danger");
-        }
-        else {
-            totalSettingsElem.classList.remove("warning");
-        totalSettingsElem.classList.remove("danger");
-        }
-    }
+    totalSettingsElem.classList.remove("danger");
+    totalSettingsElem.classList.remove("warning");
+    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalTwo()));
 }
 btnUpdateSettings.addEventListener("click", btnUpdateSettingsClicked);
 
 function btnAddClicked() {
-    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-    if (checkedRadioBtn){
-        var billItemType = checkedRadioBtn.value;
-    }
 
-    if (totalBillTwo < criticalLevel){
-    if (billItemType === "call") {
-        callTotalTwo += callCost;
-    } else if (billItemType === "sms") {
-        smsTotalTwo += smsCost;
-    }
-    }
+    calculateSet.setTotalBill();
+
+    calculateSet.calculateSettings(document.querySelector("input[name='billItemTypeWithSettings']:checked"));
     
-    totalBillTwo = callTotalTwo + smsTotalTwo;
-    callTotalSettingsElem.innerHTML = callTotalTwo.toFixed(2);
-    smsTotalSettingsElem.innerHTML = smsTotalTwo.toFixed(2);
-    totalSettingsElem.innerHTML = totalBillTwo.toFixed(2);
+    callTotalSettingsElem.innerHTML = calculateSet.getCallsTotalTwo();
+    smsTotalSettingsElem.innerHTML = calculateSet.getSMSTotalTwo();
+    totalSettingsElem.innerHTML = calculateSet.getTotalTwo();
 
-    if (criticalLevel > 0 || criticalLevel < 0) {    
-        if (totalBillTwo >= criticalLevel) {
-            totalSettingsElem.classList.add("danger");
-            totalSettingsElem.classList.remove("warning");
-        } else if (totalBillTwo >= warningLevel){        
-            totalSettingsElem.classList.add("warning");
-            totalSettingsElem.classList.remove("danger");
-        }
-        else {
-            totalSettingsElem.classList.remove("warning");
-            totalSettingsElem.classList.remove("danger");
-        }
-    }
+    totalSettingsElem.classList.remove("danger");
+    totalSettingsElem.classList.remove("warning");
+    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalTwo()));
 }
 btnAdd.addEventListener("click", btnAddClicked);

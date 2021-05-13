@@ -5,33 +5,19 @@ const smsTotalTwoElem = document.querySelector(".smsTotalTwo");
 const totalTwoElem = document.querySelector(".totalTwo");
 const totalDisplayTwoElement = document.querySelector(".orange");
 
-var callsTotalThree = 0;
-var smsTotalThree = 0;
-var totalBillThree = 0;
+let calculateRad = domFunctions();
 
 function RadioBillAddBtnClicked() {
-    var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
-    if (checkedRadioBtn){
-        var billItemType = checkedRadioBtn.value;
-    }
 
-    if (billItemType === "call") {
-        callsTotalThree += 2.75;
-    } else if (billItemType === "sms") {
-        smsTotalThree += 0.75;
-    }
+    calculateRad.calculateRadio(document.querySelector("input[name='billItemType']:checked"));
 
-    totalBillThree = callsTotalThree + smsTotalThree;
+    callTotalTwoElem.innerHTML = calculateRad.getCallsTotalTwo();
+    smsTotalTwoElem.innerHTML = calculateRad.getSMSTotalTwo();
+    totalTwoElem.innerHTML = calculateRad.getTotalTwo();
 
-    callTotalTwoElem.innerHTML = callsTotalThree.toFixed(2);
-    smsTotalTwoElem.innerHTML = smsTotalThree.toFixed(2);
-    totalTwoElem.innerHTML = totalBillThree.toFixed(2);
-
-    if ((totalBillThree >= 30) && (totalBillThree < 50)) {
-        totalDisplayTwoElement.classList.add("warning");
-    } else if (totalBillThree >= 50) {
-        totalDisplayTwoElement.classList.add("danger");
-    }
+    totalDisplayTwoElement.classList.remove("danger");
+    totalDisplayTwoElement.classList.remove("warning");
+    totalDisplayTwoElement.classList.add(calculateRad.setClass(calculateRad.getTotalTwo()));
 }
 
 radioBillAddBtnElem.addEventListener("click", RadioBillAddBtnClicked);
