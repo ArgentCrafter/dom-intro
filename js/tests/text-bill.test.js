@@ -5,16 +5,16 @@ describe("The text bill widget:", function (){
         assert.equal(calculateText.getCallsTotalOne(), 2.75);
     });
 
-    it ("Input is 'call'; smsTotal should equal 0.75", function() {
+    it ("Input is 'sms'; smsTotal should equal 0.75", function() {
         let calculateText = domFunctions();
         calculateText.setTotalsOne("sms");
         assert.equal(calculateText.getSMSTotalOne(), 0.75);
     });
 
-    it ("Input is 'call'; smsTotal should equal 0", function() {
+    it ("Input is 'call'; smsTotal should equal 0.00", function() {
         let calculateText = domFunctions();
         calculateText.setTotalsOne("call");
-        assert.equal(calculateText.getSMSTotalOne(), 0);
+        assert.equal(calculateText.getSMSTotalOne(), 0.00);
     });
     it ("Testing colour change, input is 55; Output should be 'danger'", function() {
         let calculateText = domFunctions();
@@ -33,7 +33,7 @@ describe("The text bill widget:", function (){
     it ("Testing colour change, input is 5.5; Output should be an empty string", function() {
         let calculateText = domFunctions();
         for (var i=0; i < 2; i++){
-        calculateText.setTotalsOne("cal")
+        calculateText.setTotalsOne("call")
         }
         assert.equal(calculateText.setClass(calculateText.getTotalOne()), "");
     });
