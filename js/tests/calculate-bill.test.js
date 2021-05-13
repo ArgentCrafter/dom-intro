@@ -1,4 +1,4 @@
-describe("The calculateBill function:", function(){
+describe("The calculate bill widget:", function(){
     it ("Standard input; Output should be 6.25", function(){
         let calculate = domFunctions();
         calculate.setCalcString("call, call, sms");

@@ -148,7 +148,7 @@ function domFunctions(){
         } else if ((roundedBillTotal >= 20) && (roundedBillTotal < 30)) {
             return "warning"
         } else {
-            return " "
+            return ""
         }
     }
 
@@ -158,7 +158,7 @@ function domFunctions(){
         } else if ((roundedBillTotal >= 30) && (roundedBillTotal < 50)) {
             return "warning"
         } else {
-            return " "
+            return ""
         }
     }
 
