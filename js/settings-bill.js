@@ -19,22 +19,23 @@ function btnUpdateSettingsClicked() {
 
     totalSettingsElem.classList.remove("danger");
     totalSettingsElem.classList.remove("warning");
-    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalTwo()));
+    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalThree()));
 }
 btnUpdateSettings.addEventListener("click", btnUpdateSettingsClicked);
 
-function btnAddClicked() {
+function btnAddClicked() { 
 
     calculateSet.setTotalBill();
 
-    calculateSet.calculateSettings(document.querySelector("input[name='billItemTypeWithSettings']:checked"));
+    calculateSet.setBillItemTypeTwo(document.querySelector("input[name='billItemTypeWithSettings']:checked").value);
+    calculateSet.calculateSettings();
     
-    callTotalSettingsElem.innerHTML = calculateSet.getCallsTotalTwo();
-    smsTotalSettingsElem.innerHTML = calculateSet.getSMSTotalTwo();
-    totalSettingsElem.innerHTML = calculateSet.getTotalTwo();
+    callTotalSettingsElem.innerHTML = calculateSet.getCallsTotalThree();
+    smsTotalSettingsElem.innerHTML = calculateSet.getSMSTotalThree();
+    totalSettingsElem.innerHTML = calculateSet.getTotalThree();
 
     totalSettingsElem.classList.remove("danger");
     totalSettingsElem.classList.remove("warning");
-    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalTwo()));
+    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalThree()));
 }
 btnAdd.addEventListener("click", btnAddClicked);

@@ -16,6 +16,9 @@ function domFunctions(){
     var warningLevel = 0;
     var criticalLevel = 0;
 
+    var billItemTypeOne = "";
+    var billItemTypeTwo = "";
+
     function setCalcString(calcBillString){
         calcString = calcBillString;
     }
@@ -45,52 +48,50 @@ function domFunctions(){
         return billTotal.toFixed(2);
     }
 
-    function calculateRadio(checkedRadioBtn){
-        if (checkedRadioBtn){
-            var billItemType = checkedRadioBtn.value;
-        }
-    
-        if (billItemType === "call") {
+    function calculateRadio(){
+        if (billItemTypeOne === "call") {
             callsTotalTwo+= 2.75;
-        } else if (billItemType === "sms") {
+        } else if (billItemTypeOne === "sms") {
             smsTotalTwo += 0.75;
         }
     }
 
-    function calculateSettings(checkedRadioBtn){
-        if (checkedRadioBtn){
-            var billItemType = checkedRadioBtn.value;
-        }
-        console.log(billItemType);
+    function calculateSettings(){
         if (totalBillTwo < criticalLevel){
-            if (billItemType === "call") {
-                callsTotalTwo += callCost;
-                console.log(callsTotalTwo);
-            } else if (billItemType === "sms") {
-                smsTotalTwo += smsCost;
-                console.log(smsTotalTwo);
+            if (billItemTypeTwo === "call") {
+                callsTotalThree += callCost;
+            } else if (billItemTypeTwo === "sms") {
+                smsTotalThree += smsCost;
+                    }       
             }
-            }
+    }
+
+    function setBillItemTypeOne(checkedRadioBtn){
+        if (checkedRadioBtn){
+            billItemTypeOne = checkedRadioBtn;
+        }
+    }
+
+    function setBillItemTypeTwo(checkedRadioBtn){
+        if (checkedRadioBtn){
+            billItemTypeTwo = checkedRadioBtn;
+        }
     }
 
     function setCallCost(input){
         callCost = Number(input);
-        console.log(callCost);
     }
 
     function setSMSCost(input){
         smsCost = Number(input);
-        console.log(smsCost);
     }
 
     function setWarningLevel(input){
         warningLevel = Number(input);
-        console.log(warningLevel);
     }
 
     function setCriticalLevel(input){
         criticalLevel = Number(input);
-        console.log(criticalLevel);
     }
 
     function setTotalBill(){
@@ -120,7 +121,7 @@ function domFunctions(){
     function getSMSTotalOne(){
         return smsTotal.toFixed(2);
     }
-
+    
     function getSMSTotalTwo(){
         return smsTotalTwo.toFixed(2);
     }
@@ -199,6 +200,8 @@ function domFunctions(){
         setClassSettings,
         calculateRadio,
         calculateSettings,
-        setTotalBill
+        setTotalBill,
+        setBillItemTypeOne,
+        setBillItemTypeTwo
     }
 };

@@ -20,8 +20,3 @@ function addToBillBtnClicked() {
 }
 
 addToBillBtn.addEventListener("click", addToBillBtnClicked);
-// if ((totalBill >= 30) && (totalBill < 50)) {
-    //     totalDisplayOneElement.classList.add("warning");
-    // } else if (totalBill >= 50) {
-    //     totalDisplayOneElement.classList.add("danger");
-    // }

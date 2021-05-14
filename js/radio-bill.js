@@ -8,8 +8,9 @@ const totalDisplayTwoElement = document.querySelector(".orange");
 let calculateRad = domFunctions();
 
 function RadioBillAddBtnClicked() {
-
-    calculateRad.calculateRadio(document.querySelector("input[name='billItemType']:checked"));
+    
+    calculateRad.setBillItemTypeOne(document.querySelector("input[name='billItemType']:checked").value)
+    calculateRad.calculateRadio();
 
     callTotalTwoElem.innerHTML = calculateRad.getCallsTotalTwo();
     smsTotalTwoElem.innerHTML = calculateRad.getSMSTotalTwo();
