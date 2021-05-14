@@ -79,19 +79,19 @@ function domFunctions(){
     }
 
     function setCallCost(input){
-        callCost = Number(input);
+        callCost = input;
     }
 
     function setSMSCost(input){
-        smsCost = Number(input);
+        smsCost = input;
     }
 
     function setWarningLevel(input){
-        warningLevel = Number(input);
+        warningLevel = input;
     }
 
     function setCriticalLevel(input){
-        criticalLevel = Number(input);
+        criticalLevel = input;
     }
 
     function setTotalBill(){
@@ -163,11 +163,11 @@ function domFunctions(){
         }
     }
 
-    function setClassSettings(totalBillTwo){
+    function setClassSettings(){
         if (criticalLevel > 0 || criticalLevel < 0) { 
-            if (totalBillTwo >= calculateSet.getCriticalLevel()) {
+            if (getTotalThree() >= getCriticalLevel()) {
                 return "danger";
-            } else if (totalBillTwo >= warningLevel){        
+            } else if ( getTotalThree() >= warningLevel){        
                 return "warning";
                 }
                 else {

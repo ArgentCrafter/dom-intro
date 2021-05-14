@@ -19,7 +19,7 @@ function btnUpdateSettingsClicked() {
 
     totalSettingsElem.classList.remove("danger");
     totalSettingsElem.classList.remove("warning");
-    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalThree()));
+    totalSettingsElem.classList.add(calculateSet.setClassSettings());
 }
 btnUpdateSettings.addEventListener("click", btnUpdateSettingsClicked);
 
@@ -36,6 +36,6 @@ function btnAddClicked() {
 
     totalSettingsElem.classList.remove("danger");
     totalSettingsElem.classList.remove("warning");
-    totalSettingsElem.classList.add(calculateSet.setClassSettings(calculateSet.getTotalThree()));
+    totalSettingsElem.classList.add(calculateSet.setClassSettings());
 }
 btnAdd.addEventListener("click", btnAddClicked);
