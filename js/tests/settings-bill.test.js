@@ -26,6 +26,18 @@ describe("The settings bill widget:", function (){
         calculateSet.calculateSettings();
         assert.equal(calculateSet.getSMSTotalThree(), 0.00);
     });
+    it("Testing calculateSettings, input: callCost = 10, smsCost = 5, 2 calls and 1 sms; Output should equal 25", function (){
+        let calculateSet = domFunctions();
+        calculateSet.setCallCost(10);
+        calculateSet.setSMSCost(5);
+        calculateSet.setCriticalLevel(30);
+        calculateSet.setBillItemTypeTwo("call");
+        calculateSet.calculateSettings();
+        calculateSet.calculateSettings();
+        calculateSet.setBillItemTypeTwo("sms");
+        calculateSet.calculateSettings();
+        assert.equal(calculateSet.getTotalThree(), 25);
+    });
     it("Testing colour change, input: totalThree = 35, warningLevel = 15, criticalLevel = 30; output should be 'danger'", function(){
         let calculateSet = domFunctions();
         calculateSet.setCallCost(35);

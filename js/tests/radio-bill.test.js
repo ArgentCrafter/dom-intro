@@ -17,6 +17,15 @@ describe("The radio bill widget:", function (){
         calculateRad.calculateRadio();
         assert.equal(calculateRad.getSMSTotalTwo(), 0.00);
     });
+    it("Input is 2 entries of 'call' and an 'sms' entry; Output should equal 6.25", function(){
+        let calculateRad = domFunctions();
+        calculateRad.setBillItemTypeOne("call");
+        calculateRad.calculateRadio();
+        calculateRad.calculateRadio();
+        calculateRad.setBillItemTypeOne("sms");
+        calculateRad.calculateRadio();
+        assert.equal(calculateRad.getTotalTwo(), 6.25);
+    });
     it("Testing colour change, input is 55; Output should be 'danger'", function(){
         let calculateRad = domFunctions();
         for (var i=0; i < 20; i++){

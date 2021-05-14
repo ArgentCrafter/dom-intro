@@ -16,6 +16,13 @@ describe("The text bill widget:", function (){
         calculateText.setTotalsOne("call");
         assert.equal(calculateText.getSMSTotalOne(), 0.00);
     });
+    it ("Input is 2 entries of 'call' and one 'sms' entry; Output should equal 6.25", function() {
+        let calculateText = domFunctions();
+        calculateText.setTotalsOne("call");
+        calculateText.setTotalsOne("call");
+        calculateText.setTotalsOne("sms");
+        assert.equal(calculateText.getTotalOne(), 6.25);
+    });
     it ("Testing colour change, input is 55; Output should be 'danger'", function() {
         let calculateText = domFunctions();
         for (var i=0; i < 20; i++){
