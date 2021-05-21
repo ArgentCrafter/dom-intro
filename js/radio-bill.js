@@ -1,24 +1,23 @@
-const billItemTypeRadioElem = document.querySelector(".billItemTypeRadio");
-const radioBillAddBtnElem = document.querySelector(".radioBillAddBtn");
-const callTotalTwoElem = document.querySelector(".callTotalTwo");
-const smsTotalTwoElem = document.querySelector(".smsTotalTwo");
-const totalTwoElem = document.querySelector(".totalTwo");
-const totalDisplayTwoElement = document.querySelector(".orange");
+// const billItemTypeRadioElem = document.querySelector('.billItemTypeRadio');
+const radioBillAddBtnElem = document.querySelector('.radioBillAddBtn');
+const callTotalTwoElem = document.querySelector('.callTotalTwo');
+const smsTotalTwoElem = document.querySelector('.smsTotalTwo');
+const totalTwoElem = document.querySelector('.totalTwo');
+const totalDisplayTwoElement = document.querySelector('.orange');
 
-let calculateRad = domFunctions();
+const calculateRad = domFunctions();
 
 function RadioBillAddBtnClicked() {
-    
-    calculateRad.setBillItemTypeOne(document.querySelector("input[name='billItemType']:checked").value)
-    calculateRad.calculateRadio();
+  calculateRad.setBillItemTypeOne(document.querySelector("input[name='billItemType']:checked").value);
+  calculateRad.calculateRadio();
 
-    callTotalTwoElem.innerHTML = calculateRad.getCallsTotalTwo();
-    smsTotalTwoElem.innerHTML = calculateRad.getSMSTotalTwo();
-    totalTwoElem.innerHTML = calculateRad.getTotalTwo();
+  callTotalTwoElem.innerHTML = calculateRad.getCallsTotalTwo();
+  smsTotalTwoElem.innerHTML = calculateRad.getSMSTotalTwo();
+  totalTwoElem.innerHTML = calculateRad.getTotalTwo();
 
-    totalDisplayTwoElement.classList.remove("danger");
-    totalDisplayTwoElement.classList.remove("warning");
-    totalDisplayTwoElement.classList.add(calculateRad.setClass(calculateRad.getTotalTwo()));
+  totalDisplayTwoElement.classList.remove('danger');
+  totalDisplayTwoElement.classList.remove('warning');
+  totalDisplayTwoElement.classList.add(calculateRad.setClass(calculateRad.getTotalTwo()));
 }
 
-radioBillAddBtnElem.addEventListener("click", RadioBillAddBtnClicked);
+radioBillAddBtnElem.addEventListener('click', RadioBillAddBtnClicked);
