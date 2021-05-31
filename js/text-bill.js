@@ -1,22 +1,35 @@
 const billTypeTextElement = document.querySelector('.billTypeText');
 const addToBillBtn = document.querySelector('.addToBillBtn');
-const callTotalOneElement = document.querySelector('.callTotalOne');
-const smsTotalOneElement = document.querySelector('.smsTotalOne');
-const totalOneElement = document.querySelector('.totalOne');
-const totalDisplayOneElement = document.querySelector('.red');
+const totalOneElement = document.getElementById('.totalOne');
 
 const calculateText = domFunctions();
+
+var templateSource = document.querySelector(".textTemplate").innerHTML;
+
+var textTemplate = Handlebars.compile(templateSource);
+
+var textDataElem = document.querySelector(".textData");
+var textData = {
+  callstotal: calculateText.getCallsTotalOne(),
+  smstotal: calculateText.getSMSTotalOne(),
+  total: calculateText.getTotalOne()
+};
+
+var textDataHTML = textTemplate(textData);
+textDataElem.innerHTML = textDataHTML;
 
 function addToBillBtnClicked() {
   calculateText.setTotalsOne(billTypeTextElement.value);
 
-  callTotalOneElement.innerHTML = calculateText.getCallsTotalOne();
-  smsTotalOneElement.innerHTML = calculateText.getSMSTotalOne();
-  totalOneElement.innerHTML = calculateText.getTotalOne();
+  textData = {
+    callstotal: calculateText.getCallsTotalOne(),
+    smstotal: calculateText.getSMSTotalOne(),
+    total: calculateText.getTotalOne(),
+    "class" : calculateText.setClass(calculateText.getTotalOne())
+  };
 
-  totalDisplayOneElement.classList.remove('danger');
-  totalDisplayOneElement.classList.remove('warning');
-  totalDisplayOneElement.classList.add(calculateText.setClass(calculateText.getTotalOne()));
+  var textDataHTML = textTemplate(textData);
+  textDataElem.innerHTML = textDataHTML;
 }
 
 addToBillBtn.addEventListener('click', addToBillBtnClicked);
