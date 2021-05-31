@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script type="text/x-template" class="textTemplate">
+    <script type="text/x-template" class="template">
     <tr>
       <td>Call total:
       <td>R {{callstotal}}
     <tr>
       <td>SMS total:
       <td>R {{smstotal}}
-    <tr id="totalOne" class={{"class"}}>
+    <tr id="totalOne" class="{{class}}">
       <td>Total:
       <td>R {{total}}
     </script>
@@ -105,18 +105,7 @@
             <div class="six columns">
               <h5>Totals</h5>
               <table class="textData">
-                <!-- <tr>
-                  <td>Call total</td>
-                  <td>R<span class="callTotalOne">0.00</span></td>
-                </tr>
-                <tr>
-                  <td>SMS total</td>
-                  <td>R<span class="smsTotalOne">0.00</span></td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td class="red">R<span class="totalOne">0.00</span></td>
-                </tr> -->
+              
               </table>
             </div>
           </div>
@@ -160,19 +149,8 @@
             </div>
             <div class="six columns">
                   <h5>Totals</h5>
-                  <table>
-                    <tr>
-                      <td>Call total</td>
-                      <td>R<span class="callTotalTwo">0.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>SMS total</td>
-                      <td>R<span class="smsTotalTwo">0.00</span></td>
-                    </tr>
-                    <tr >
-                      <td>Total</td>
-                      <td class="orange" >R<span class="totalTwo">0.00</span></td>
-                    </tr>
+                  <table class="radioData">
+                    
                   </table>
             </div>
           </div>

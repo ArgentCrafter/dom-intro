@@ -4,7 +4,7 @@ const totalOneElement = document.getElementById('.totalOne');
 
 const calculateText = domFunctions();
 
-var templateSource = document.querySelector(".textTemplate").innerHTML;
+var templateSource = document.querySelector(".template").innerHTML;
 
 var textTemplate = Handlebars.compile(templateSource);
 
@@ -25,7 +25,7 @@ function addToBillBtnClicked() {
     callstotal: calculateText.getCallsTotalOne(),
     smstotal: calculateText.getSMSTotalOne(),
     total: calculateText.getTotalOne(),
-    "class" : calculateText.setClass(calculateText.getTotalOne())
+    class : calculateText.setClass(calculateText.getTotalOne())
   };
 
   var textDataHTML = textTemplate(textData);
